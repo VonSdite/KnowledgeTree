@@ -57,18 +57,21 @@ class AutoSeeVedio(object):
 
         start = datetime.now()           # 获取开始看视频的时间
         while True:
-            end = datetime.now()         # 获取当前时间
-            if (end - start).seconds > lastTime:
-                # 计算时间是否已经看够了，看够了就跳下一个视频
-                start = datetime.now()
-                self.driver.find_element_by_xpath(
-                    '/html/body/div[3]/div[5]/div/div[5]/div').click()
             try:
-                # 监听弹窗，弹出来就点关闭，没有就继续监听
-                self.driver.find_element_by_class_name('popbtn_cancel').click()
+                end = datetime.now()         # 获取当前时间
+                if (end - start).seconds > lastTime:
+                    # 计算时间是否已经看够了，看够了就跳下一个视频
+                    start = datetime.now()
+                    self.driver.find_element_by_xpath(
+                        '/html/body/div[3]/div[5]/div/div[5]/div').click()
+                try:
+                    # 监听弹窗，弹出来就点关闭，没有就继续监听
+                    self.driver.find_element_by_class_name('popbtn_cancel').click()
+                except:
+                    pass
             except:
                 pass
-
+                
 if __name__ == '__main__':
     me = AutoSeeVedio(user='yourUserName', pwd='yourPassword') # 你的用户名和密码
     me.startAuto()
