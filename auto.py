@@ -70,3 +70,7 @@ class AutoSeeVedio(object):
             except:
                 pass
             time.sleep(1)
+
+if __name__ == '__main__':
+    me = AutoSeeVedio(user='yourUserName', pwd='yourPassword') # 你的用户名和密码
+    me.startAuto()
