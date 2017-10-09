@@ -35,11 +35,10 @@ class AutoSeeVedio(object):
         # 点继续学习
         self.driver.find_element_by_xpath(
             '//*[@id="course_recruit_studying_ul"]/li[1]/div[2]/div[2]/a').click()
-        time.sleep(1)
+        time.sleep(3)
         # 切换窗口句柄
         self.driver.switch_to_window(self.driver.window_handles[1])
-
-        time.sleep(4)
+        time.sleep(1)
         # 关掉提示
         self.driver.find_element_by_class_name('popbtn_yes').click()
         time.sleep(1)
@@ -54,7 +53,7 @@ class AutoSeeVedio(object):
         # 将时间转换成秒，
         # 并加多30秒，给长一点时间保证视频完全看完
         lastTime = int(lastTime[1]) * 60 + \
-            int(lastTime[2]) + 30      
+            int(lastTime[2]) + 15     
 
         start = datetime.now()           # 获取开始看视频的时间
         while True:
@@ -69,7 +68,6 @@ class AutoSeeVedio(object):
                 self.driver.find_element_by_class_name('popbtn_cancel').click()
             except:
                 pass
-            time.sleep(1)
 
 if __name__ == '__main__':
     me = AutoSeeVedio(user='yourUserName', pwd='yourPassword') # 你的用户名和密码
