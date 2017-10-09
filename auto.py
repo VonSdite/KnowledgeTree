@@ -64,6 +64,16 @@ class AutoSeeVedio(object):
                     start = datetime.now()
                     self.driver.find_element_by_xpath(
                         '/html/body/div[3]/div[5]/div/div[5]/div').click()
+                    time.sleep(2)
+                    # 获取当前视频播放时间长度
+                    # 需要重新换取视频播放长度
+                    lastTime = self.driver.find_element_by_css_selector(
+                        '.clearfix.video.children.current_play').text
+                    lastTime = self.pattern.findall(lastTime)[0].split(':')  # 读取视频播放的时间
+                    # 将时间转换成秒，
+                    # 并加多15秒，给长一点时间保证视频完全看完
+                    lastTime = int(lastTime[1]) * 60 + \
+                        int(lastTime[2]) + 15
                 try:
                     # 监听弹窗，弹出来就点关闭，没有就继续监听
                     self.driver.find_element_by_class_name('popbtn_cancel').click()
