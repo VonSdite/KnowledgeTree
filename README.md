@@ -3,7 +3,7 @@
 ### 运行环境
 - python 3.6.2
 - python模块 selenium
-- 谷歌浏览器， 谷歌浏览器的webdrvier
+- 谷歌浏览器， 谷歌浏览器的webdrvier(百度自行配置)
 
 ### 使用
 ```
