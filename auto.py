@@ -53,7 +53,7 @@ class AutoSeeVedio(object):
         # 将时间转换成秒，
         # 并加多15秒，给长一点时间保证视频完全看完
         lastTime = int(lastTime[1]) * 60 + \
-            int(lastTime[2]) + 15     
+            int(lastTime[2])      
 
         start = datetime.now()           # 获取开始看视频的时间
         while True:
@@ -71,9 +71,8 @@ class AutoSeeVedio(object):
                         '.clearfix.video.children.current_play').text
                     lastTime = self.pattern.findall(lastTime)[0].split(':')  # 读取视频播放的时间
                     # 将时间转换成秒，
-                    # 并加多15秒，给长一点时间保证视频完全看完
                     lastTime = int(lastTime[1]) * 60 + \
-                        int(lastTime[2]) + 15
+                        int(lastTime[2]) 
                 try:
                     # 监听弹窗，弹出来就点关闭，没有就继续监听
                     self.driver.find_element_by_class_name('popbtn_cancel').click()
